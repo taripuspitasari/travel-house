@@ -8,7 +8,7 @@ import Details from "./pages/Details";
 
 const App = () => {
   return (
-    <div className="max-w-[1440px] mx-auto bg-yellow">
+    <div className="max-w-[1440px] mx-auto">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
