@@ -11,7 +11,7 @@ const Banner = () => {
   return (
     <section className="h-full max-h-[640px] mb-8 xl:mb-24 relative">
       <div>
-        <img src={Image} alt="" className="h-[600px] w-full" />
+        <img src={Image} alt="" className=" h-[600px] lg:w-full" />
         <div className="bg-black/30 absolute h-[600px] w-full top-0 right-0" />
         <div className="absolute text-center top-28 inset-0 w-[540px] mx-auto">
           <h1 className="text-5xl text-white font-bold ">
