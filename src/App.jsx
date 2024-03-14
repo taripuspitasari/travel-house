@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
-import Details from "./pages/Details";
+import PropertyDetails from "./pages/PropertyDetails";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<Details />} />
+        <Route path="/property/:id" element={<PropertyDetails />} />
       </Routes>
       <Footer />
     </div>
