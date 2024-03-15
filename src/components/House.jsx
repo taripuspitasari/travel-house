@@ -41,17 +41,7 @@ const House = ({house}) => {
           <div>{surface}</div>
         </div>
       </div>
-      <div className="flex justify-between">
-        <div className="text-lg font-semibold text-orange-700">$ {price}</div>
-        <div>
-          <Link
-            to=""
-            className="text-white  hover:bg-orange-700 bg-orange-600 px-3 py-2 rounded-full transition"
-          >
-            View Details
-          </Link>
-        </div>
-      </div>
+      <div className="text-lg font-semibold text-orange-700">$ {price}</div>
     </div>
   );
 };

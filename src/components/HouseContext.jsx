@@ -36,6 +36,32 @@ const HouseContextProvider = ({children}) => {
     setProperties(uniqueProperties);
   }, []);
 
+  const handleClick = () => {
+    // set Loading
+    // create a function that checks if the string includes (any)
+    const isDefault = str => {
+      return str.split(" ").includes("(any)");
+    };
+    // get first values of price and parse it to number
+    const minPrice = parseInt(price.split(" ")[0]);
+    // get second value of price and parse it to number
+    const maxPrice = parseInt(price.split(" ")[2]);
+
+    const newHouses = housesData.filter(house => {
+      const housePrice = parseInt(house.price);
+
+      // if values are selected
+      if (
+        house.country === country &&
+        house.type === type &&
+        housePrice >= minPrice &&
+        housePrice <= maxPrice
+      ) {
+        return house;
+      }
+    });
+  };
+
   return (
     <HouseContext.Provider
       value={{
@@ -49,6 +75,7 @@ const HouseContextProvider = ({children}) => {
         setPrice,
         houses,
         loading,
+        handleClick,
       }}
     >
       {children}
