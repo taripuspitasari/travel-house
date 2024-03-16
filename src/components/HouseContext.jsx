@@ -38,6 +38,7 @@ const HouseContextProvider = ({children}) => {
 
   const handleClick = () => {
     // set Loading
+    setLoading(true);
     // create a function that checks if the string includes (any)
     const isDefault = str => {
       return str.split(" ").includes("(any)");
@@ -53,13 +54,63 @@ const HouseContextProvider = ({children}) => {
       // if values are selected
       if (
         house.country === country &&
-        house.type === type &&
+        house.type === property &&
         housePrice >= minPrice &&
         housePrice <= maxPrice
       ) {
         return house;
       }
+
+      // if all values are default
+      if (isDefault(country) && isDefault(property) && isDefault(price)) {
+        return house;
+      }
+
+      // if country is not default
+      if (!isDefault(country) && isDefault(property) && isDefault(price)) {
+        return house.country === country;
+      }
+
+      // if property is not default
+      if (isDefault(country) && !isDefault(property) && isDefault(price)) {
+        return house.type === property;
+      }
+
+      // if price is not default
+      if (isDefault(country) && isDefault(property) && !isDefault(price)) {
+        return housePrice >= minPrice && housePrice <= maxPrice;
+      }
+
+      // if country & property is not default
+      if (!isDefault(country) && !isDefault(property) && isDefault(price)) {
+        return house.country === country && house.type === property;
+      }
+
+      // if country & price is not default
+      if (!isDefault(country) && isDefault(property) && !isDefault(price)) {
+        return (
+          house.country === country &&
+          housePrice >= minPrice &&
+          housePrice <= maxPrice
+        );
+      }
+
+      // if property & price is not default
+      if (isDefault(country) && !isDefault(property) && !isDefault(price)) {
+        return (
+          house.type === property &&
+          housePrice >= minPrice &&
+          housePrice <= maxPrice
+        );
+      }
     });
+    console.log(newHouses);
+    setTimeout(() => {
+      return (
+        newHouses.length < 1 ? setHouses([]) : setHouses(newHouses),
+        setLoading(false)
+      );
+    }, 1000);
   };
 
   return (
